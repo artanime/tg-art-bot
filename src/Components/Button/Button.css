@@ -1,0 +1,13 @@
+.button {
+    padding: 10px 15px;
+    background-color: #4561d6; /* Светло-синий цвет */
+    color: #ffffff; /* Белый цвет текста */
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #00BFFF; /* Более насыщенный синий цвет при наведении */
+}

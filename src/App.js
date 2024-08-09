@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect} from "react";
+import {useTelegram} from "./Components/hooks/useTelegram";
+import Header from "./Components/Header/Header";
+import {Route, Routes} from 'react-router-dom'
+import ProductList from "./Components/ProductList/ProductList";
+import Form from "./Components/Form/Form";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {onToggleButton, tg} = useTelegram();
+
+    useEffect(() => {
+        tg.ready();
+    }, [])
+
+    return (
+        <div className="App">
+            <Header />
+            <Routes>
+                <Route index element={<ProductList />}/>
+                <Route path={'form'} element={<Form />}/>
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
